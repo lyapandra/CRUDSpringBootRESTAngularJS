@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+
+    <script th:src="@{js/mainShip.js}"></script>
+    <link th:href="@{css/main.css}" rel="stylesheet" />
+
+    <head>
+<body ng-app="ShipManagement" ng-controller="ShipController">
+<h3>
+    CRUD: Spring Boot + Rest + AngularJS
+</h3>
+<!--ng-model - 2ways link-->
+<form ng-submit="submitShip()">
+    <table border="0">
+        <tr>
+            <td>Ship Id</td>
+            <td>{{shipForm.shipId}}</td>
+        </tr>
+        <tr>
+            <td>Ship No</td>
+            <td><input type="text" ng-model="shipForm.shipNo" /></td>
+        </tr>
+        <tr>
+            <td>Ship Name</td>
+            <td><input type="text" ng-model="shipForm.shipName"  /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Submit" class="blue-button" />
+            </td>
+        </tr>
+    </table>
+</form>
+<br/>
+<a class="create-button" ng-click="createShip()">Create Ship</a>
+<table border="1">
+    <tr>
+        <th>Ship Id</th>
+        <th>Ship No</th>
+        <th>Ship Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <!-- $scope.ships -->
+    <!--1 way link-->
+    <tr ng-repeat="ship in ships">
+        <td> {{ ship.shipId }}</td>
+        <td> {{ ship.shipNo }}</td>
+        <td >{{ ship.shipName }}</td>
+        <td>
+            <a ng-click="editShip(ship)" class="edit-button">Edit</a>
+        </td>
+        <td>
+            <a ng-click="deleteShip(ship)" class="delete-button">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

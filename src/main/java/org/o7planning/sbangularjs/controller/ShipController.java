@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ShipController {
 
-    @RequestMapping("/ships")
-    public String welcome() {
-        return "ships";
+    @RequestMapping("/shipIndex")
+    public String shipIndex() {
+        return "shipIndex";
     }
 }
