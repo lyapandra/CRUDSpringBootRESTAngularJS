@@ -1,7 +1,7 @@
 package org.o7planning.sbangularjs.dao;
 
 
-import org.o7planning.sbangularjs.model.Ship;
+import org.o7planning.sbangularjs.model.ShipDB;
 import org.o7planning.sbangularjs.model.ShipForm;
 import org.springframework.stereotype.Repository;
 
@@ -10,16 +10,16 @@ import java.util.*;
 @Repository
 public class ShipDAO {
 
-    private static final Map<Long, Ship> empMap = new HashMap<Long, Ship>();
+    private static final Map<Long, ShipDB> empMap = new HashMap<Long, ShipDB>();
 
     static {
         initShips();
     }
 
     private static void initShips() {
-        Ship emp1 = new Ship(1L, "E01", "Smith", "Clerk");
-        Ship emp2 = new Ship(2L, "E02", "Allen", "Salesman");
-        Ship emp3 = new Ship(3L, "E03", "Jones", "Manager");
+        ShipDB emp1 = new ShipDB(1L, "E01", "Smith", "Clerk");
+        ShipDB emp2 = new ShipDB(2L, "E02", "Allen", "Salesman");
+        ShipDB emp3 = new ShipDB(3L, "E03", "Jones", "Manager");
 
         empMap.put(emp1.getShipId(), emp1);
         empMap.put(emp2.getShipId(), emp2);
@@ -37,21 +37,21 @@ public class ShipDAO {
         return max;
     }
 
-    public Ship getShip(Long empId) {
+    public ShipDB getShip(Long empId) {
         return empMap.get(empId);
     }
 
-    public Ship addShip(ShipForm empForm) {
+    public ShipDB addShip(ShipForm empForm) {
         Long empId= this.getMaxShipId()+ 1;
         empForm.setShipId(empId);
-        Ship newShip = new Ship(empForm);
+        ShipDB newShip = new ShipDB(empForm);
 
         empMap.put(newShip.getShipId(), newShip);
         return newShip;
     }
 
-    public Ship updateShip(ShipForm empForm) {
-        Ship emp = this.getShip(empForm.getShipId());
+    public ShipDB updateShip(ShipForm empForm) {
+        ShipDB emp = this.getShip(empForm.getShipId());
         if(emp!= null)  {
             emp.setShipNo(empForm.getShipNo());
             emp.setShipName(empForm.getShipName());
@@ -64,9 +64,9 @@ public class ShipDAO {
         empMap.remove(empId);
     }
 
-    public List<Ship> getAllShips() {
-        Collection<Ship> c = empMap.values();
-        List<Ship> list = new ArrayList<Ship>();
+    public List<ShipDB> getAllShips() {
+        Collection<ShipDB> c = empMap.values();
+        List<ShipDB> list = new ArrayList<ShipDB>();
         list.addAll(c);
         return list;
     }

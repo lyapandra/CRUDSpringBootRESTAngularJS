@@ -1,23 +1,23 @@
 package org.o7planning.sbangularjs.model;
 
-public class Ship {
+public class ShipDB {
     private Long shipId;
     private String shipNo;
     private String shipName;
     private String position;
 
-    public Ship() {
+    public ShipDB() {
 
     }
 
-    public Ship(ShipForm shipForm) {
+    public ShipDB(ShipForm shipForm) {
         this.shipId = shipForm.getShipId();
         this.shipNo = shipForm.getShipNo();
         this.shipName = shipForm.getShipName();
         this.position = shipForm.getPosition();
     }
 
-    public Ship(Long shipId, String shipNo, String shipName, String position) {
+    public ShipDB(Long shipId, String shipNo, String shipName, String position) {
         this.shipId = shipId;
         this.shipNo = shipNo;
         this.shipName = shipName;

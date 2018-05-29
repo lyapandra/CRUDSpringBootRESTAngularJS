@@ -1,7 +1,7 @@
 package org.o7planning.sbangularjs.controller;
 
 import org.o7planning.sbangularjs.dao.ShipDAO;
-import org.o7planning.sbangularjs.model.Ship;
+import org.o7planning.sbangularjs.model.ShipDB;
 import org.o7planning.sbangularjs.model.ShipForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -25,8 +25,8 @@ public class ShipRESTController {
             produces = { MediaType.APPLICATION_JSON_VALUE, //
                     MediaType.APPLICATION_XML_VALUE })
     @ResponseBody
-    public List<Ship> getShips() {
-        List<Ship> list = shipDAO.getAllShips();
+    public List<ShipDB> getShips() {
+        List<ShipDB> list = shipDAO.getAllShips();
         return list;
     }
 
@@ -39,7 +39,7 @@ public class ShipRESTController {
             produces = { MediaType.APPLICATION_JSON_VALUE, //
                     MediaType.APPLICATION_XML_VALUE })
     @ResponseBody
-    public Ship getShip(@PathVariable("shipId") Long shipId) {
+    public ShipDB getShip(@PathVariable("shipId") Long shipId) {
         return shipDAO.getShip(shipId);
     }
 
@@ -53,7 +53,7 @@ public class ShipRESTController {
             produces = { MediaType.APPLICATION_JSON_VALUE, //
                     MediaType.APPLICATION_XML_VALUE })
     @ResponseBody
-    public Ship addShip(@RequestBody ShipForm shipForm) {
+    public ShipDB addShip(@RequestBody ShipForm shipForm) {
 
         System.out.println("(Service Side) Creating ship with shipNo: " + shipForm.getShipNo());
 
@@ -69,7 +69,7 @@ public class ShipRESTController {
             produces = { MediaType.APPLICATION_JSON_VALUE, //
                     MediaType.APPLICATION_XML_VALUE })
     @ResponseBody
-    public Ship updateShip(@RequestBody ShipForm shipForm) {
+    public ShipDB updateShip(@RequestBody ShipForm shipForm) {
 
         System.out.println("(Service Side) Editing ship with Id: " + shipForm.getShipId());
 
